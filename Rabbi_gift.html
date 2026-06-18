@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover, shrink-to-fit=yes">
+  <title>Pixellab Blue | PK Rabbi-র জন্য গিফট</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Tiro+Bangla:ital@0;1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      touch-action: manipulation;
+    }
+
+    body {
+      font-family: 'Quicksand', 'Tiro Bangla', sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      height: 100dvh;
+      width: 100vw;
+      position: fixed;
+      top: 0;
+      left: 0;
+      margin: 0;
+      padding: 12px;
+      background: #020418;
+    }
+
+    /* অ্যানিমেটেড গ্লোয়িং ব্যাকগ্রাউন্ড - হালকা রং পরিবর্তন */
+    .animated-bg {
+      position: fixed;
+      top: -30%;
+      left: -30%;
+      width: 160%;
+      height: 160%;
+      z-index: 0;
+      pointer-events: none;
+      background: 
+        radial-gradient(ellipse at 30% 40%, rgba(0, 120, 255, 0.35) 0%, transparent 45%),
+        radial-gradient(ellipse at 70% 60%, rgba(0, 180, 255, 0.3) 0%, transparent 45%),
+        radial-gradient(ellipse at 50% 80%, rgba(0, 80, 200, 0.28) 0%, transparent 40%),
+        radial-gradient(ellipse at 20% 70%, rgba(0, 200, 255, 0.25) 0%, transparent 40%);
+      animation: bgGlowShift 6s ease-in-out infinite alternate,
+                 bgColorShift 10s ease-in-out infinite alternate;
+    }
+
+    @keyframes bgGlowShift {
+      0% {
+        transform: scale(1) translate(0%, 0%);
+        opacity: 0.75;
+      }
+      50% {
+        transform: scale(1.06) translate(2%, -1.5%);
+        opacity: 0.9;
+      }
+      100% {
+        transform: scale(1.02) translate(-1.5%, 1%);
+        opacity: 0.85;
+      }
+    }
+
+    @keyframes bgColorShift {
+      0% {
+        filter: hue-rotate(0deg) brightness(1);
+      }
+      25% {
+        filter: hue-rotate(8deg) brightness(1.08);
+      }
+      50% {
+        filter: hue-rotate(-5deg) brightness(1.05);
+      }
+      75% {
+        filter: hue-rotate(12deg) brightness(1.1);
+      }
+      100% {
+        filter: hue-rotate(3deg) brightness(1.03);
+      }
+    }
+
+    /* সেকেন্ডারি গ্লো লেয়ার */
+    .animated-bg-2 {
+      position: fixed;
+      top: -20%;
+      left: -20%;
+      width: 140%;
+      height: 140%;
+      z-index: 0;
+      pointer-events: none;
+      background: 
+        radial-gradient(circle at 50% 20%, rgba(0, 160, 255, 0.22) 0%, transparent 50%),
+        radial-gradient(circle at 80% 40%, rgba(0, 100, 200, 0.25) 0%, transparent 50%),
+        radial-gradient(circle at 20% 80%, rgba(0, 200, 255, 0.2) 0%, transparent 50%);
+      animation: bgGlowShift2 8s ease-in-out infinite alternate,
+                 bgColorShift2 12s ease-in-out infinite alternate;
+    }
+
+    @keyframes bgGlowShift2 {
+      0% {
+        transform: scale(1.02) translate(-1%, 1%);
+        opacity: 0.7;
+      }
+      50% {
+        transform: scale(1.05) translate(1.5%, -1%);
+        opacity: 0.9;
+      }
+      100% {
+        transform: scale(1.01) translate(0.5%, 0.5%);
+        opacity: 0.8;
+      }
+    }
+
+    @keyframes bgColorShift2 {
+      0% {
+        filter: hue-rotate(0deg) brightness(1);
+      }
+      30% {
+        filter: hue-rotate(-10deg) brightness(1.06);
+      }
+      60% {
+        filter: hue-rotate(5deg) brightness(1.12);
+      }
+      100% {
+        filter: hue-rotate(-3deg) brightness(1.04);
+      }
+    }
+
+    .card-container {
+      position: relative;
+      z-index: 10;
+      width: 100%;
+      max-width: 400px;
+      height: auto;
+      max-height: 100vh;
+      max-height: 100dvh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto;
+    }
+
+    /* প্রিমিয়াম গ্লাসমরফিক কার্ড */
+    .gift-card {
+      background: rgba(10, 15, 38, 0.45);
+      backdrop-filter: blur(30px);
+      -webkit-backdrop-filter: blur(30px);
+      border-radius: 44px;
+      padding: 22px 20px 26px;
+      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.75), 0 0 0 1px rgba(0, 180, 255, 0.45), 0 0 55px rgba(0, 140, 255, 0.4);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      text-align: center;
+      color: white;
+      width: 100%;
+      animation: floatCard 5.5s infinite ease-in-out;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      transition: box-shadow 0.5s ease;
+    }
+
+    .gift-card:hover {
+      box-shadow: 0 35px 70px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(0, 200, 255, 0.6), 0 0 70px rgba(0, 160, 255, 0.5);
+    }
+
+    @keyframes floatCard {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-6px); }
+      100% { transform: translateY(0); }
+    }
+
+    /* প্রোফাইল ইমেজ - অ্যানিমেটেড বর্ডার */
+    .profile-pic-wrapper {
+      margin: 0 auto 10px;
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      background: conic-gradient(from 0deg, #00a6ff, #006eff, #00d4ff, #3b6eff, #00a6ff);
+      padding: 4px;
+      box-shadow: 0 12px 28px rgba(0, 160, 255, 0.7);
+      position: relative;
+      animation: rotateBorder 4s linear infinite;
+    }
+
+    @keyframes rotateBorder {
+      0% { filter: hue-rotate(0deg); }
+      100% { filter: hue-rotate(360deg); }
+    }
+
+    .profile-pic {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      background: #0b1230;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><linearGradient id="grad" x1="0%25" y1="0%25" x2="100%25" y2="100%25"><stop offset="0%25" stop-color="%23ffffff"/><stop offset="100%25" stop-color="%23b0e0ff"/></linearGradient></defs><circle cx="50" cy="38" r="22" fill="url(%23grad)" opacity="0.95"/><circle cx="50" cy="82" r="32" fill="url(%23grad)" opacity="0.9"/><circle cx="38" cy="32" r="5" fill="%23111c4a"/><circle cx="62" cy="32" r="5" fill="%23111c4a"/><path d="M40 46 Q50 58 60 46" stroke="%23111c4a" stroke-width="3.5" fill="none" stroke-linecap="round"/></svg>');
+      background-size: cover;
+      background-position: center;
+      background-color: #1f2b61;
+      overflow: hidden;
+    }
+
+    .gift-badge {
+      position: absolute;
+      bottom: -6px;
+      right: -10px;
+      background: #ff2d5f;
+      border-radius: 30px;
+      padding: 5px 14px;
+      font-size: 0.7rem;
+      font-weight: 700;
+      box-shadow: 0 6px 16px rgba(255, 50, 80, 0.8);
+      letter-spacing: 0.5px;
+      color: white;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      backdrop-filter: blur(6px);
+    }
+
+    .recipient-name {
+      font-size: 2rem;
+      font-weight: 800;
+      margin-top: 6px;
+      background: linear-gradient(to right, #e6f4ff, #6dbfff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      filter: drop-shadow(0 0 14px #0055cc);
+      letter-spacing: 0.8px;
+    }
+
+    .bangla-sub {
+      font-family: 'Tiro Bangla', 'Quicksand', sans-serif;
+      font-size: 0.9rem;
+      color: #b0d8ff;
+      margin-bottom: 6px;
+      opacity: 0.9;
+    }
+
+    /* অ্যাপ আইকন */
+    .app-icon-container {
+      margin: 14px auto 8px;
+      width: 80px;
+      height: 80px;
+      background: linear-gradient(145deg, #002b4d, #000c1f);
+      border-radius: 22px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 14px 24px rgba(0, 160, 255, 0.55), inset 0 -3px 0 rgba(255,255,255,0.2);
+      border: 2px solid #0099ff;
+    }
+
+    .app-icon i {
+      font-size: 2.8rem;
+      color: #00dcff;
+      filter: drop-shadow(0 0 12px cyan);
+    }
+
+    .app-name {
+      font-size: 1.7rem;
+      font-weight: 800;
+      background: linear-gradient(180deg, #ffffff 0%, #7dc8ff 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin: 4px 0 2px;
+    }
+
+    .mod-badge {
+      background: #ffb300;
+      color: #0a0e27;
+      display: inline-block;
+      padding: 5px 18px;
+      border-radius: 30px;
+      font-weight: 700;
+      font-size: 0.8rem;
+      margin: 6px 0 12px;
+      box-shadow: 0 6px 0 #a06d00, 0 10px 20px rgba(255, 200, 0, 0.5);
+    }
+
+    .modder-info {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 26px;
+      padding: 12px 16px;
+      margin: 5px 0 10px;
+      backdrop-filter: blur(14px);
+      border: 1px solid rgba(255,255,255,0.18);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .modder {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+
+    .modder i {
+      font-size: 1.2rem;
+      color: #ffc107;
+    }
+
+    .divider-vertical {
+      width: 2px;
+      height: 20px;
+      background: rgba(255,255,255,0.25);
+      border-radius: 2px;
+    }
+
+    .gift-message {
+      font-style: italic;
+      margin: 8px 0 10px;
+      color: #e0f0ff;
+      font-size: 0.8rem;
+      background: rgba(0, 150, 255, 0.16);
+      padding: 10px 13px;
+      border-radius: 18px;
+      border-left: 3px solid #00c8ff;
+      line-height: 1.4;
+    }
+
+    /* ডাউনলোড বাটন */
+    .download-btn {
+      background: linear-gradient(135deg, #00b8ff, #0044ff);
+      border: none;
+      color: white;
+      padding: 14px 24px;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 1.1rem;
+      margin: 8px 0 4px;
+      width: 100%;
+      cursor: pointer;
+      box-shadow: 0 12px 28px rgba(0, 70, 255, 0.7), 0 0 25px #0099ff;
+      transition: all 0.25s cubic-bezier(0.25, 0.8, 0.25, 1.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      letter-spacing: 0.8px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .download-btn::after {
+      content: "";
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255,255,255,0.35) 0%, transparent 60%);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .download-btn:active::after {
+      opacity: 0.3;
+    }
+
+    .bounce-glow {
+      animation: intenseBounce 0.65s ease, superGlow 0.8s ease-in-out;
+      box-shadow: 0 0 55px #00c8ff, 0 0 85px #004cff, 0 18px 35px rgba(0,130,255,0.9);
+    }
+
+    @keyframes intenseBounce {
+      0% { transform: scale(1); }
+      30% { transform: scale(0.88); }
+      50% { transform: scale(1.13); }
+      70% { transform: scale(0.93); }
+      85% { transform: scale(1.04); }
+      100% { transform: scale(1); }
+    }
+
+    @keyframes superGlow {
+      0% { box-shadow: 0 12px 28px rgba(0,70,255,0.7), 0 0 25px #0099ff; }
+      50% { box-shadow: 0 0 65px #00e0ff, 0 0 95px #005eff, 0 22px 45px #002ea0; }
+      100% { box-shadow: 0 12px 28px rgba(0,70,255,0.7), 0 0 25px #0099ff; }
+    }
+
+    .footer-note {
+      margin-top: 8px;
+      font-size: 0.7rem;
+      color: #a0c6ff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      opacity: 0.8;
+    }
+
+    #confetti-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 999;
+    }
+
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <!-- অ্যানিমেটেড ব্যাকগ্রাউন্ড লেয়ার -->
+  <div class="animated-bg"></div>
+  <div class="animated-bg-2"></div>
+
+  <canvas id="confetti-canvas" class="hidden"></canvas>
+
+  <div class="card-container">
+    <div class="gift-card">
+      <div class="profile-pic-wrapper">
+        <div class="profile-pic"></div>
+        <div class="gift-badge">
+          <i class="fas fa-gift"></i> গিফট
+        </div>
+      </div>
+
+      <div class="recipient-name">PK Rabbi</div>
+      <div class="bangla-sub">তোমার জন্য স্পেশাল মোড</div>
+
+      <div class="app-icon-container">
+        <div class="app-icon">
+          <i class="fas fa-paint-brush"></i>
+        </div>
+      </div>
+      <div class="app-name">Pixellab Blue</div>
+      <span class="mod-badge"><i class="fas fa-crown"></i> MOD VERSION</span>
+
+      <div class="modder-info">
+        <div class="modder">
+          <i class="fas fa-user-astronaut"></i>
+          <span>Indrajeet</span>
+        </div>
+        <div class="divider-vertical"></div>
+        <div class="modder">
+          <i class="fas fa-user-friends"></i>
+          <span>IFTY</span>
+        </div>
+      </div>
+
+      <div class="gift-message">
+        <i class="fas fa-quote-left" style="color: #7ad0ff;"></i>
+        Indrajeet আর IFTY মিলে বানানো এই দারুণ MOD, শুধু Rabbi ভাইয়ের জন্য। ক্রিয়েটিভিটি এখন আরও মসৃণ!
+        <i class="fas fa-quote-right" style="color: #7ad0ff;"></i>
+      </div>
+
+      <!-- ডাউনলোড বাটন (গুগল ড্রাইভ লিংক) -->
+      <button id="downloadButton" class="download-btn">
+        <i class="fas fa-cloud-download-alt"></i> ডাউনলোড করুন <i class="fas fa-bolt"></i>
+      </button>
+
+      <div class="footer-note">
+        <i class="fas fa-heart" style="color: #ff4d6d;"></i> Indrajeet & IFTY <i class="fas fa-heart" style="color: #ff4d6d;"></i>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function() {
+      const canvas = document.getElementById('confetti-canvas');
+      const ctx = canvas.getContext('2d');
+      let animationId;
+      let particles = [];
+
+      function resizeCanvas() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+      }
+      window.addEventListener('resize', resizeCanvas);
+      resizeCanvas();
+
+      class ConfettiParticle {
+        constructor(x, y) {
+          this.x = x;
+          this.y = y;
+          this.size = Math.random() * 8 + 4;
+          this.speedY = Math.random() * 4 + 2.5;
+          this.speedX = (Math.random() - 0.5) * 5;
+          this.color = `hsl(${Math.random() * 360}, 85%, 65%)`;
+          this.rotation = Math.random() * 360;
+          this.rotationSpeed = (Math.random() - 0.5) * 12;
+        }
+        update() {
+          this.y += this.speedY;
+          this.x += this.speedX;
+          this.rotation += this.rotationSpeed;
+          this.speedY += 0.08;
+        }
+        draw(ctx) {
+          ctx.save();
+          ctx.translate(this.x, this.y);
+          ctx.rotate((this.rotation * Math.PI) / 180);
+          ctx.fillStyle = this.color;
+          ctx.fillRect(-this.size / 2, -this.size / 2, this.size, this.size * 0.7);
+          ctx.restore();
+        }
+      }
+
+      function spawnConfetti() {
+        particles = [];
+        for (let i = 0; i < 140; i++) {
+          particles.push(new ConfettiParticle(
+            Math.random() * canvas.width,
+            Math.random() * canvas.height * 0.3 - 30
+          ));
+        }
+      }
+
+      function animateConfetti() {
+        if (!canvas.classList.contains('hidden')) {
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+          particles.forEach((p, index) => {
+            p.update();
+            p.draw(ctx);
+            if (p.y > canvas.height + 40 || p.x < -60 || p.x > canvas.width + 60) {
+              particles.splice(index, 1);
+            }
+          });
+          if (particles.length > 0) {
+            animationId = requestAnimationFrame(animateConfetti);
+          } else {
+            canvas.classList.add('hidden');
+            cancelAnimationFrame(animationId);
+          }
+        }
+      }
+
+      function fireConfetti() {
+        cancelAnimationFrame(animationId);
+        resizeCanvas();
+        spawnConfetti();
+        canvas.classList.remove('hidden');
+        animateConfetti();
+        setTimeout(() => {
+          if (!canvas.classList.contains('hidden')) {
+            particles = [];
+            canvas.classList.add('hidden');
+          }
+        }, 4800);
+      }
+
+      const downloadBtn = document.getElementById('downloadButton');
+
+      function triggerBounceGlow() {
+        downloadBtn.classList.add('bounce-glow');
+        setTimeout(() => {
+          downloadBtn.classList.remove('bounce-glow');
+        }, 700);
+      }
+
+      downloadBtn.addEventListener('click', function(e) {
+        triggerBounceGlow();
+        fireConfetti();
+
+        if (window.navigator && window.navigator.vibrate) {
+          window.navigator.vibrate([40, 60, 40]);
+        }
+
+        // 🔗 এখানে আপনার গুগল ড্রাইভ লিংক বসান
+        const googleDriveLink = "https://drive.google.com/your-file-link"; // আপনার আসল গুগল ড্রাইভ লিংক
+        setTimeout(() => {
+          window.open(googleDriveLink, '_blank');
+        }, 280);
+      });
+
+      // স্ক্রল পুরোপুরি ব্লক
+      document.body.addEventListener('touchmove', function(e) {
+        e.preventDefault();
+      }, { passive: false });
+
+    })();
+  </script>
+</body>
+</html>
